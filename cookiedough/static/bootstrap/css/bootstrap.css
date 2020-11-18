@@ -1303,6 +1303,7 @@ p {
 @media (min-width: 768px) {
   .lead {
     font-size: 21px;
+    color: #fffaff;
   }
 }
 small,
@@ -1313,6 +1314,9 @@ mark,
 .mark {
   background-color: #ff851b;
   padding: .2em;
+}
+.text-white {
+  color: #ffffff;
 }
 .text-left {
   text-align: left;
