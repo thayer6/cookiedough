@@ -8,6 +8,7 @@ class User(AbstractUser):
     """Default user for Cookie Dough."""
 
     #: First and last name do not cover name patterns around the globe
+    # add bio to user info
     name = CharField(_("Name of User"), blank=True, max_length=255)
     bio = CharField(("Short Bio"), blank=True, max_length=500)
 
