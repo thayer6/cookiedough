@@ -7,7 +7,8 @@ IPYTHONDIR=/app/.ipython
 REDIS_URL=redis://redis:6379/0
 
 # Celery
-# ------------------------------------------------------------------------------
+# -------------------
+CELEREY_BROKER_URL=REDIS_URL
 
 # Flower
 CELERY_FLOWER_USER=bYKiobTBFaSPNeXLyXihTIHqQLsTDFsV
