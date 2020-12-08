@@ -1,0 +1,21 @@
+{% block page_content %}
+<h1>Jobs</h1>
+<div class="row">
+<!-- loop over all projects passed in by the context dictionary -->
+{% for job in jobs %}
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <div class="card-body">
+                <h5 class="card-title">{{ job.title }}</h5>
+                <p class="card-text">{{ job.company }}</p>
+                <!-- accessing URLs in Django is similar to accessing static files -->
+                <a href="{% url 'job_detail' job.pk %}"
+                   class="btn btn-primary">
+                   Read More
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
