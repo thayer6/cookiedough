@@ -19,18 +19,24 @@
     <div class="col-sm-4">
       <ul class="list-group">
         <li class="list-group-item text-muted">Profile</li>
+        <li class='list-group-item text-right'><span class="pull-left"><strong>First Name:</strong></span> {{ user.first_name }}
+        <li class='list-group-item text-right'><span class="pull-left"><strong>Last Name:</strong></span> {{ user.last_name }}
+        <li class='list-group-item text-right'><span class="pull-left"><strong>Location:</strong></span> {{ user.city }}, {{ user.state }}
         <li class="list-group-item text-right"><span class="pull-left"><strong>Email:</strong></span> {{ user.email|default:"missing" }}
       </ul>
     </div>
     <div class="col-sm-8">
       <div class="panel panel-default">
-        <div class="panel-heading">{{ user.name }}'s Profile
-	</div>
+        <div class="panel-heading">General Information</div>
         <div class="panel-body">
-	  <strong>Bio</strong>: {{ user.bio }}
-	</div>
+	        <strong>Bio</strong>: {{ user.bio }}
+	      </div>
+          <div class="panel-heading">Prospective Information</div>
+          <div class="panel-body">
+            <strong>Job Titles to Search</strong>: placeholder
+          </div>
+        </div>
       </div>
-    </div>
   </div>
 </div>
 
