@@ -5,6 +5,8 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, RedirectView, UpdateView
 
+from .forms import UserChangeForm
+
 User = get_user_model()
 
 
@@ -34,6 +36,15 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
             self.request, messages.INFO, _("Infos successfully updated")
         )
         return super().form_valid(form)
+
+    def update(self, request):
+        if request.method == "POST":
+            form = UserChangeForm(data=request.Post, instance=request.user)
+            if form.is_valid():
+                form.save()
+                return reverse(
+                    "users:detail", kwargs={"username": self.request.user.username}
+                )
 
 
 user_update_view = UserUpdateView.as_view()

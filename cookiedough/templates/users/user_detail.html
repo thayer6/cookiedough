@@ -7,7 +7,7 @@
 {% block content %}
 <div class="container profile-head">
   <div class="row">
-      <div class="col-sm-2"><img title="profile picture" class="img-circle img-responsive" src="{% thumbnail user.user.photo.url|default:'default_profile.png' 140x140 crop %}">
+      <div class="col-sm-2"><img title="profile picture" class="img-circle img-responsive" src="{% thumbnail user.photo|default:'default_profile.png' 140x140 crop %}">
       </div>
     <br>
     <h1 class="text-primary">{{user.name}}</h1>
