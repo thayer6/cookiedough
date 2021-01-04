@@ -23,6 +23,8 @@ COPY requirements.txt /tmp/pip-tmp/
 #RUN pip install -r requirements.txt
 RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
    && rm -rf /tmp/pip-tmp
+RUN pip install localflavor
+RUN export CELERY_BROKER_URL=redis://localhost:6379/0
 
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \

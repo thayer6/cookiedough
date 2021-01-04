@@ -38,12 +38,11 @@
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"ms-python.python",
-		"mtxr.sqltools",
-		"mtxr.sqltools-driver-pg"
+		"ckolkman.vscode-postgres"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [5000, 5432],
+	"forwardPorts": [5432, 8000],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "pip install --user -r requirements.txt",
