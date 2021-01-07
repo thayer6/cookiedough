@@ -24,6 +24,7 @@ COPY requirements.txt /tmp/pip-tmp/
 RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
    && rm -rf /tmp/pip-tmp
 RUN pip install localflavor
+RUN pip install argon2-cffi
 #RUN ["export", "CELERY_BROKER_URL=redis://localhost:6379/0"]
 #RUN ["chmod", "+x", "./migrate-run.sh"]
 # [Optional] Uncomment this section to install additional OS packages.
