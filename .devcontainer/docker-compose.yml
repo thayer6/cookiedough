@@ -5,15 +5,20 @@ services:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
-      args:
+      #args:
         # [Choice] Python version: 3, 3.8, 3.7, 3.6
-        VARIANT: 3
+        #VARIANT: 3
         # [Choice] Install Node.js
-        INSTALL_NODE: "true"
-        NODE_VERSION: "lts/*"
+        #INSTALL_NODE: "true"
+        #NODE_VERSION: "lts/*"
         # On Linux, you may need to update USER_UID and USER_GID below if not your local UID is not 1000.
-        USER_UID: 1000
-        USER_GID: 1000
+        #USER_UID: 1000
+        #USER_GID: 1000
+    ports:
+      - "8000:8000"
+      - "1025:1025"
+      - "8025:8025"
+      - "5432:5432"
 
     volumes:
       - ..:/workspace:cached
@@ -22,7 +27,7 @@ services:
     command: sleep infinity
 
     # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
-    network_mode: service:db
+    #network_mode: service:db
 
     # Uncomment the next line to use a non-root user for all processes.
     # user: vscode
@@ -39,7 +44,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
       POSTGRES_PASSWORD: postgres
-
+    network_mode: service:app
     # Add "forwardPorts": ["5432"] to **devcontainer.json** to forward PostgreSQL locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
 
@@ -47,8 +52,9 @@ services:
     image: mailhog/mailhog
     logging:
       driver: 'none'
-    ports:
-      - 1025:1025 # smtp server
-      - 8025:8025 # web ui
+    #ports:
+    #  - 1025:1025 # smtp server
+    #  - 8025:8025 # web ui
+    network_mode: service:app
 volumes:
   postgres-data:
