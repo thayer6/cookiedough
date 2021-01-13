@@ -18,8 +18,12 @@ class User(AbstractUser):
     state = CharField(
         _("State"), max_length=2, choices=STATE_CHOICES, null=True, blank=True
     )
-    bio = CharField(("Short Bio"), blank=True, max_length=500)
+    bio = CharField(("Bio"), blank=True, max_length=500)
     photo = models.ImageField(upload_to="profile_pics", blank=True)
+    skills = CharField(_("Skills"), blank=True, max_length=250)
+    jobs_of_interest = CharField(
+        _("Job Titles of Interest"), blank=True, max_length=250
+    )
 
     def get_absolute_url(self):
         """Get url for user's detail view.

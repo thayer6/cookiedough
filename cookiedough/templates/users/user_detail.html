@@ -19,22 +19,23 @@
     <div class="col-sm-4">
       <ul class="list-group">
         <li class="list-group-item text-muted">Profile</li>
-        <li class='list-group-item text-right'><span class="pull-left"><strong>First Name:</strong></span> {{ user.first_name }}
-        <li class='list-group-item text-right'><span class="pull-left"><strong>Last Name:</strong></span> {{ user.last_name }}
-        <li class='list-group-item text-right'><span class="pull-left"><strong>Location:</strong></span> {{ user.city }}, {{ user.state }}
+        <li class='list-group-item text-right'><span class="pull-left"><strong>First Name:</strong></span> {{ user.first_name|default:"First Name" }}
+        <li class='list-group-item text-right'><span class="pull-left"><strong>Last Name:</strong></span> {{ user.last_name|default:"Last Name" }}
+        <li class='list-group-item text-right'><span class="pull-left"><strong>Location:</strong></span> {{ user.city|default:"City" }}, {{ user.state }}
         <li class="list-group-item text-right"><span class="pull-left"><strong>Email:</strong></span> {{ user.email|default:"missing" }}
       </ul>
     </div>
     <div class="col-sm-8">
       <div class="panel panel-default">
         <div class="panel-heading">General Information</div>
-        <div class="panel-body">
-	        <strong>Bio</strong>: {{ user.bio }}
-	      </div>
-          <div class="panel-heading">Prospective Information</div>
-          <div class="panel-body">
-            <strong>Job Titles to Search</strong>: placeholder
-          </div>
+        <ul class="list-group">
+          <li class="list-group-item text-right"><span class = "pull-left"><strong>Bio:</strong></span> {{ user.bio|default:"Add a bio" }}
+          <li class="list-group-item text-right"><span class = "pull-left"><strong>Skills:</strong></span> {{ user.skills|default:"Add skills" }}
+        </ul>
+        <div class="panel-heading">Prospective Information</div>
+        <ul class="list-group">
+          <li class="list-group-item text-right"><span class="pull-left"><strong>Job Titles of Interest</strong></span> {{ user.jobs_of_interest|default:"List job titles of interest" }}
+        </ul>
         </div>
       </div>
   </div>
