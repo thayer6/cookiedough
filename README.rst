@@ -14,8 +14,11 @@ Working cookiecutter template
 How to start up
 ===============
 - Open VSCode and click on the arrows in the bottom left hand corner. Select Open Folder in Container and navigate to the cloned version of this repository, then click Open.
-- Run python manage.py migrate. If you get an error about a CELERY_BROKER_URL insert this command: export CELERY_BROKER_URL=redis://localhost:6379/0
-- Run python manage.py runserver to see the current local version of the Django app
+- Run ./migrate-run.sh to migrate the database and run the local version of the Django app
+
+=============================================================================================
+All the rest of these instructions came with the cookiecutter template so they might not work
+=============================================================================================
 
 
 
