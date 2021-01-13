@@ -1,0 +1,13 @@
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+{% block page_content %}
+<h1>{{ job.title }}</h1>
+    <h5>Job URL:</h5>
+        <p>{{ job.job_url }}</p>
+        <br>
+    <h5>Job Text:</h5>
+        <p>{{ job.job_text }}</p>
+
+{% endblock %}
