@@ -8,8 +8,9 @@ class Job(models.Model):
     title = models.CharField(max_length=250)
     company = models.CharField(max_length=250)
     job_url = models.CharField(max_length=250, unique=True, default="null")
-    job_text = models.CharField(max_length=250000, default="null")
+    job_raw_text = models.CharField(max_length=250000, default="null")
     created_date = models.DateTimeField(default=timezone.now)
+    job_clean_text = models.CharField(max_length=250000, default="null")
 
     def __str__(self):
         return self.title

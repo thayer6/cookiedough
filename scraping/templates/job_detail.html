@@ -3,6 +3,19 @@
 
 
 {% block page_content %}
+<div class="card text-center">
+    <div class="card-header">
+</div>
+<div class="card-body">
+    <h5 class="card-title">{{ job.title }}</h5>
+    <h6 class="card-text">{{ job.company }}</h6>
+    <p class="card-text">{{ job.job_clean_text }}</p>
+    <a href={{ job.job_url }} class="btn btn-primary">Go to Job</a>
+    <button type="button" class="btn btn-primary">Download Personalized Resume</button>
+    <button type="button" class="btn btn-primary">Download Personalized Cover Letter</button>
+</div>
+
+<!--
 <h1>{{ job.title }}</h1>
     <h5>Job URL:</h5>
         <p>{{ job.job_url }}</p>
@@ -14,3 +27,4 @@
         <button type="button" class="btn btn-primary">Download Personalized Cover Letter</button>
     </div>
 {% endblock %}
+-->
