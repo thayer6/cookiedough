@@ -15,7 +15,6 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-
     <!-- Custom styles for this site -->
     {% block styles %}
     <link href="{% static 'site/css/main.css' %}" rel="stylesheet">
@@ -95,15 +94,7 @@
     {% endblock splash %}
 
     {% block container %}
-    <div class="container">
-
-      {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
-      {% endblock content %}
-
-    </div><!-- /.container -->
     {% endblock container %}
-
     <!-- Site footer -->
     {% block footer %}
       <!-- Some social button for contact will do -->

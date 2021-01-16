@@ -1,17 +1,28 @@
 {% extends "base.html" %}
 {% load static %}
 {% load thumbnail %}
-
 {% block title %}{{ block.super }}Profile{% endblock %}
 
-{% block content %}
-<div class="container profile-head">
+{% block navbar-left %}
+  {% include "_navbar.html" with active_link="home" %}
+{% endblock %}
+
+{% block navbar-right %}
+  {% if not user.is_authenticated %}
+<a class="btn btn-default" href="{% url 'account_login' %}" role="button">Log in</a>
+<a class="btn btn-primary" href="{% url 'account_signup' %}" role="button">Sign up</a>
+  {% else %}
+    {{ block.super }}
+  {% endif %}
+{% endblock %}
+
+{% block container %}
+<div class="container profile-head mt-1">
   <div class="row">
-      <div class="col-sm-2"><img title="profile picture" class="img-circle img-responsive" src="{% thumbnail user.photo|default:'default_profile.png' 140x140 crop %}">
+      <div class="col-sm-4"><img title="profile picture" class="img-circle img-responsive" src="{% thumbnail user.photo|default:'default_profile.png' 140x140 crop %}"></div>
+      <div class="col-sm-8 centered-profilehead"><h1><strong>{{ user.first_name }} {{ user.last_name }}</strong></h1></div>
       </div>
     <br>
-    <h1 class="text-primary">{{user.name}}</h1>
-  </div>
 </div>
 </div>
 
@@ -57,4 +68,4 @@
 
 
 </div>
-{% endblock content %}
+{% endblock %}
