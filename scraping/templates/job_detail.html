@@ -22,10 +22,15 @@
     <div class="col">
         <h5 class="text-center"><h1><strong>{{ job.title }}</strong></h1></h5>
         <h6 class="text-center"><h3>{{ job.company }}</h3></h6>
-        <p class="job-card text-left">{{ job.job_raw_text|safe }}</p>
+    </div>
+</div>
+<div class="container mt-2">
+        <div class="mb-2-right">
         <a href={{ job.job_url }} class="btn btn-primary">Go to Job</a>
-        <a href={% static 'resume_doc.docx' %} class="btn btn-primary">Download Personalized Resume</a>
-        <a href={% static 'coverletter_doc.docx' %} class="btn btn-primary">Download Personalized Cover Letter</a>
+        <a href={% static 'resume_doc.docx' %} class="btn btn-primary">Download Resume</a>
+        <a href={% static 'coverletter_doc.docx' %} class="btn btn-primary">Download Cover Letter</a>
+    </div>
+        <p class="job-card text-left">{{ job.job_raw_text|safe }}</p>
     </div>
 </div>
 <!--

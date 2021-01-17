@@ -16,6 +16,8 @@ How to start up
 - Open VSCode and click on the arrows in the bottom left hand corner. Select Open Folder in Container and navigate to the cloned version of this repository, then click Open.
 - Run ./migrate-run.sh to migrate the database and run the local version of the Django app
 
+Testing notifications!
+
 =============================================================================================
 All the rest of these instructions came with the cookiecutter template so they might not work
 =============================================================================================
