@@ -4,6 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 from django.core.management.base import BaseCommand
 from tqdm import tqdm
+import django
 
 # load class from models
 from scraping.models import Job
@@ -239,7 +240,7 @@ class Command(BaseCommand):
             )
             print("%s added" % (title,))
 
-        except Job.exists():
+        except django.db.utils.IntegrityError:
             print("%s already exists" % (title,))
 
         self.stdout.write("job complete!")
