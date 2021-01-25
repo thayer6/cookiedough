@@ -1,67 +1,69 @@
-from django.db import models
+import re
+
+import django
 import requests
 from bs4 import BeautifulSoup
-import re
 from tqdm import tqdm
-import django
+
 from scraping.models import Job
+
 # from ..models import Job
+
 
 class IndeedScraper:
     """
-    For each job description that the scraper comes across,  
+    For each job description that the scraper comes across,
     """
+
     def __init__(self, jobs=[], locations=[], num_pages=1) -> None:
         # super().__init__()
-        'https://www.indeed.com/jobs?q=software+engineer&l=Seattle%2C+WA'
+        "https://www.indeed.com/jobs?q=software+engineer&l=Seattle%2C+WA"
 
-        self.base_url = 'https://www.indeed.com/'
+        self.base_url = "https://www.indeed.com/"
         self.job_list = jobs
-        self.locations = locations 
+        self.locations = locations
         # need to have a function to check that self.locations is the right format
 
         # this might be changed later
         self.num_pages = num_pages
         return
-    
+
     # May be irrelevant with Ben's structure
     def search(self, what: str, city: str, state: str, by_date=True) -> BeautifulSoup:
         """gets first page of the search"""
-        search_url = self.base_url + 'jobs?q='
-        for word in what.split(' '):
-            search_url += word + '+'
-        search_url = search_url[:len(search_url)-1]
-        search_url += '&l=' + city + '%2C+' + state
-        
+        search_url = self.base_url + "jobs?q="
+        for word in what.split(" "):
+            search_url += word + "+"
+        search_url = search_url[: len(search_url) - 1]
+        search_url += "&l=" + city + "%2C+" + state
+
         search_page = requests.get(search_url)
-        search_soup = BeautifulSoup(
-            search_page.content, 'lxml'
-            )
+        search_soup = BeautifulSoup(search_page.content, "lxml")
         return search_soup
 
     # for understanding job_data_pull
     def make_search_url(
         self, job: str, city: str, state: str, by_date=True, page_num=0
-        ) -> str:
+    ) -> str:
         """
         creates url for indeed search page
         """
-        search_url = self.base_url + 'jobs?q='
-        for word in job.split(' '):
-            search_url += word + '+'
-        search_url = search_url[:len(search_url)-1]
-        search_url += '&l=' + city + '%2C+' + state
+        search_url = self.base_url + "jobs?q="
+        for word in job.split(" "):
+            search_url += word + "+"
+        search_url = search_url[: len(search_url) - 1]
+        search_url += "&l=" + city + "%2C+" + state
         if by_date:
-            search_url += '&sort=date'
-        if page_num>0:
-            num = 10*page_num
-            search_url += '&start=%i' % num
+            search_url += "&sort=date"
+        if page_num > 0:
+            num = 10 * page_num
+            search_url += "&start=%i" % num
         return search_url
 
     @staticmethod
     def job_data_pull(url: str) -> list[dict]:
         """
-        Returns a list of dictionaries that contain links to job description 
+        Returns a list of dictionaries that contain links to job description
         pages and base information, which can then be passed to the database
         """
         page = requests.get(url)  # go to the page noted by the url
@@ -239,6 +241,9 @@ class IndeedScraper:
         text = text.replace("</b>", " ")
         text = text.replace("<br>", "    ")
         text = text.replace("</br>", " ")
+        text = text.replace("<br/>", " ")
+        text = text.replace('<h2 class="jobSectionHeader">', " ")
+        text = text.replace("</h2>", " ")
         text = text.replace("<i>", "    ")
         text = text.replace("</i>", " ")
         text = text.replace(
@@ -285,7 +290,7 @@ class IndeedScraper:
 
             except django.db.utils.IntegrityError:
                 print("%s already exists" % (title,))
-        
+
         return
 
     @staticmethod
@@ -297,11 +302,11 @@ class IndeedScraper:
 
         scraper = IndeedScraper()
         temp_url = scraper.make_search_url(
-            job='software engineering', city='Austin', state='Texas'
+            job="software engineering", city="Austin", state="Texas"
         )
         job_pull = scraper.job_data_pull(temp_url)
         scraper.push_to_database(job_pull=job_pull)
-        print('task finished')
+        print("task finished")
 
         return
 
@@ -311,9 +316,9 @@ class IndeedScraper:
             for place in self.locations:
                 for num in range(self.num_pages):
                     temp_url = self.make_search_url(
-                        job=job, city=place['city'], state=place['state'], page_num=num
+                        job=job, city=place["city"], state=place["state"], page_num=num
                     )
                     job_pull = self.job_data_pull(url=temp_url)
                     self.push_to_database(job_pull=job_pull)
-        print('task finished')
+        print("task finished")
         return

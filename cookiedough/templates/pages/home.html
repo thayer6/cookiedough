@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% load thumbnail %}
 {% load static %}
 {% load crispy_forms_tags %}
 
@@ -18,7 +19,10 @@
   {% endif %}
 {% endblock %}
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 {% block splash %}
+  {% if not user.is_authenticated %}
   <div class="jumbotron jumbotron-carousel corporate-jumbo">
     <div class="container">
       <div class="row">
@@ -28,14 +32,27 @@
 	  <a class="btn btn-primary" href="{% url 'account_signup' %}" role="button">Sign up for Free!</a>
         </div>
         <div class="col-md-4 col-sm-4">
-
         </div>
       </div>
     </div>
   </div>
+  {% else %}
+  <div id="sec2" class="text-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1 class="text-white">Welcome to SimpleSubmitter! </h1>
+        <p class="lead">Check out your personalized job listings on the Job tab above.</p>
+        <p class="lead">Simplify your job search with automated cover letters tailored just for you!</p>
+      </div>
+    </div>
+  </div>
+</div>
+  {% endif %}
 {% endblock splash %}
 
 {% block container %}
+  {% if not user.is_authenticated %}
 <!-- Benefits of the Django application -->
 <a id="about"></a>
 
@@ -53,7 +70,24 @@
     </div>
   </div>
 </div>
+  {% else %}
+<a id="about"></a>
 
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <h2>How do I get started?</h2>
+      <p>Login to your LinkedIn, fill out job titles and locations of interest then peruse jobs recommended just for you based on your experience!</p>
+      <p><a class="btn btn-primary" href="#" role="button">Learn More &raquo;</a></p>
+    </div>
+    <div class="col-lg-6">
+      <h2>What's next?</h2>
+      <p>Once you see a job you like, download a curated resume and cover letter tailored to the role and your personalized just for you so that you're ready to apply in seconds!</p>
+      <p><a class="btn btn-primary" href="#" role="button">Learn More &raquo;</a></p>
+    </div>
+  </div>
+</div>
+  {% endif %}
 {% endblock container %}
 
 {% block scripts %}

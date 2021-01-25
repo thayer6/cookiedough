@@ -63,9 +63,15 @@ body>.navbar-transparent {
 
 .btn {
     background-image: none;
+    background-color: #4868ff;
+    border-color: #4868ff;
     -webkit-box-shadow: 0px 1px 0px #ddd;
     -moz-box-shadow: 0px 1px 0px #ddd;
     box-shadow: 0px 1px 0px #ddd;
+}
+.btn-primary:hover {
+    background-color: #4868ff;
+    border-color: #4868ff; /*set the color you want here*/
 }
 
 /* Home page styling */
@@ -121,6 +127,10 @@ body>.navbar-transparent {
 #sec1 {
     background: #4868ff;
     margin-top: 20px;
+}
+#sec2 {
+    background: #4868ff;
+    margin-top: 50px;
 }
 
 /* Profile page styling */
