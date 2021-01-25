@@ -17,7 +17,7 @@ class Job(models.Model):
     """
     # is_job_expired = models.CharField(max_length=250, default="False")
     # # date job was posted on website gathered from
-    # date_job_posted = models.DateTimeField(default=timezone.datetime(1999, 1, 1, 12, 12, 12)) 
+    # date_job_posted = models.DateTimeField(default=timezone.datetime(1999, 1, 1, 12, 12, 12))
 
     def __str__(self):
         return self.title
