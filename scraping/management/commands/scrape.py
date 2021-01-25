@@ -31,7 +31,6 @@ class Command(BaseCommand):
         scraper.large_search()
 
         return
-
     # code has been refactored into IndeedScraper class
     def old_handle(self, *args, **options):
 

@@ -175,7 +175,7 @@ class IndeedScraper:
         return
 
     def large_search(self):
-        # scraper = IndeedScraper()
+        
         for job in self.job_list:
             for place in self.locations:
                 for num in range(self.num_pages):
