@@ -33,6 +33,7 @@ class Command(BaseCommand):
         return
 
     # code has been refactored into IndeedScraper class
+
     def old_handle(self, *args, **options):
 
         # scrape code
