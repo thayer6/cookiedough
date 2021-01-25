@@ -1,3 +1,9 @@
 {
-    "python.linting.pylintEnabled": false
+    "python.linting.pylintEnabled": false,
+    "python.pythonPath": "/usr/local/bin/python",
+    "editor.tokenColorCustomizations": {
+        "[Abyss]": {
+            "comments": "#fb7324"
+            }
+        }
 }

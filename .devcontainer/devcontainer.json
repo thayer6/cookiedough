@@ -40,7 +40,9 @@
 		"ms-python.python",
 		"ckolkman.vscode-postgres",
 		"esbenp.prettier-vscode",
-		"ms-python.vscode-pylance"
+		"ms-python.vscode-pylance",
+		"gruntfuggly.todo-tree",
+		"2gua.rainbow-brackets"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
